@@ -50,10 +50,7 @@ describe('The Message class', function() {
       var message = new jmap.Message({}, 'id', 'blobId', 'threadId', ['inbox']);
 
       expect(message.inReplyToMessageId).to.equal(null);
-      expect(message.isUnread).to.equal(false);
-      expect(message.isFlagged).to.equal(false);
-      expect(message.isAnswered).to.equal(false);
-      expect(message.isDraft).to.equal(false);
+      expect(message.keywords).to.deep.equal({});
       expect(message.hasAttachment).to.equal(false);
       expect(message.headers).to.deep.equal({});
       expect(message.from).to.deep.equal(jmap.EMailer.unknown());
@@ -73,10 +70,7 @@ describe('The Message class', function() {
       var message = new jmap.Message({}, 'id', 'blobId', 'threadId', ['inbox'], {});
 
       expect(message.inReplyToMessageId).to.equal(null);
-      expect(message.isUnread).to.equal(false);
-      expect(message.isFlagged).to.equal(false);
-      expect(message.isAnswered).to.equal(false);
-      expect(message.isDraft).to.equal(false);
+      expect(message.keywords).to.deep.equal({});
       expect(message.hasAttachment).to.equal(false);
       expect(message.headers).to.deep.equal({});
       expect(message.from).to.deep.equal(jmap.EMailer.unknown());
@@ -274,6 +268,12 @@ describe('The Message class', function() {
         blobId: 'fed75e7fb4f512aa',
         threadId: 'fed75e7fb4f512aa',
         mailboxIds: ['mailbox2'],
+        keywords: {
+          '\Draft': true,
+          '\Seen': true,
+          '\Flagged': true,
+          '\Answered': true
+        },
         isUnread: true,
         isFlagged: true,
         isAnswered: true,
@@ -300,10 +300,12 @@ describe('The Message class', function() {
       expect(message.threadId).to.equal('fed75e7fb4f512aa');
       expect(message.mailboxIds).to.deep.equal(['mailbox2']);
       expect(message.inReplyToMessageId).to.equal('fm2u11');
-      expect(message.isUnread).to.equal(true);
-      expect(message.isFlagged).to.equal(true);
-      expect(message.isAnswered).to.equal(true);
-      expect(message.isDraft).to.equal(true);
+      expect(message.keywords).to.deep.equal({
+        '\Draft': true,
+        '\Seen': true,
+        '\Flagged': true,
+        '\Answered': true
+      });
       expect(message.hasAttachment).to.equal(true);
       expect(message.headers).to.deep.equal({ To: 'To' });
       expect(message.from).to.deep.equal(new jmap.EMailer({

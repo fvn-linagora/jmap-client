@@ -2132,7 +2132,7 @@ describe('The Client class', function() {
             expectedClientId: {
               subject: 'message topic',
               mailboxIds: [5],
-              isDraft: true
+              keywords: {'$Draft': true }
             }
           }
         }, '#0']]);
@@ -2155,7 +2155,7 @@ describe('The Client class', function() {
             expectedClientId: {
               subject: 'message topic',
               mailboxIds: [5],
-              isDraft: true
+              keywords: {'$Draft': true }
             }
           }
         }, '#0']]);
@@ -2164,8 +2164,7 @@ describe('The Client class', function() {
       };
 
       client.saveAsDraft(new jmap.OutboundMessage(jmap, {
-          subject: 'message topic',
-          isDraft: false
+          subject: 'message topic'
         }))
         .then(null, done);
     });

@@ -10,10 +10,7 @@ describe('The OutboundMessage class', function() {
     function expectDefaultValues(message) {
       expect(message.mailboxIds).to.deep.equal([]);
       expect(message.inReplyToMessageId).to.not.exist;
-      expect(message.isUnread).to.not.exist;
-      expect(message.isFlagged).to.not.exist;
-      expect(message.isAnswered).to.not.exist;
-      expect(message.isDraft).to.not.exist;
+      expect(message.keywords).to.not.exist;
       expect(message.headers).to.not.exist;
       expect(message.from).to.not.exist;
       expect(message.to).to.not.exist;
@@ -42,10 +39,12 @@ describe('The OutboundMessage class', function() {
       var message = new jmap.OutboundMessage({}, {
         mailboxIds: ['1', '5'],
         inReplyToMessageId: 'inReplyToMessageId',
-        isUnread: true,
-        isFlagged: true,
-        isAnswered: true,
-        isDraft: false,
+        keywords: {
+          $Seen: false,
+          $Flagged: true,
+          $Answered: true,
+          $Draft: false,
+        },
         headers: { custom: 'header' },
         from: 'from@open-paas.org',
         to: 'to@open-paas.org',
@@ -60,10 +59,12 @@ describe('The OutboundMessage class', function() {
 
       expect(message.mailboxIds).to.deep.equal(['1', '5']);
       expect(message.inReplyToMessageId).to.equal('inReplyToMessageId');
-      expect(message.isUnread).to.equal(true);
-      expect(message.isFlagged).to.equal(true);
-      expect(message.isAnswered).to.equal(true);
-      expect(message.isDraft).to.equal(false);
+      expect(message.keywords).to.deep.equal({
+        $Seen: false,
+        $Flagged: true,
+        $Answered: true,
+        $Draft: false
+      });
       expect(message.headers).to.deep.equal({ custom: 'header' });
       expect(message.from).to.equal('from@open-paas.org');
       expect(message.to).to.equal('to@open-paas.org');
@@ -97,10 +98,12 @@ describe('The OutboundMessage class', function() {
       var opts = {
         mailboxIds: ['1', '5'],
         inReplyToMessageId: 'inReplyToMessageId',
-        isUnread: true,
-        isFlagged: true,
-        isAnswered: true,
-        isDraft: true,
+        keywords: {
+          $Seen: true,
+          $Flagged: true,
+          $Answered: true,
+          $Draft: true,
+        },
         headers: { custom: 'header' },
         from: 'from@open-paas.org',
         to: 'to@open-paas.org',

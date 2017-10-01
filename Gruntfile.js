@@ -139,10 +139,11 @@ module.exports = function(grunt) {
             [
               'babelify',
               {
-                presets: ['es2015'],
+                presets: ['env'],
                 plugins: [
                   ['transform-builtin-extend', { globals: ['Error'], approximate: true }],
                   'transform-object-assign',
+                  'transform-object-rest-spread',
                   'add-module-exports']
               }
             ]

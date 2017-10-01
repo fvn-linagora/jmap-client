@@ -363,7 +363,7 @@ describe('The Message class', function() {
       expect(function() {
         new jmap.Message({
           updateMessage: function() {}
-        }, 'id', 'threadId', ['inbox']).setIsFlagged();
+        }, 'id', 'blobId', 'threadId', ['inbox']).setIsFlagged();
       }).to.throw(Error);
     });
 
@@ -371,7 +371,7 @@ describe('The Message class', function() {
       expect(function() {
         new jmap.Message({
           updateMessage: function() {}
-        }, 'id', 'threadId', ['inbox']).setIsFlagged('true');
+        }, 'id', 'blobId', 'threadId', ['inbox']).setIsFlagged('true');
       }).to.throw(Error);
     });
 
@@ -379,7 +379,7 @@ describe('The Message class', function() {
       var message = new jmap.Message({}, 'id', 'blobId', 'threadId', ['inbox']);
 
       message.update = function(option) {
-        expect(option).to.deep.equal({ isFlagged: true });
+        expect(option).to.deep.equal({ keywords: {$Flagged: true }});
         done();
       };
       message.setIsFlagged(true);

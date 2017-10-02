@@ -274,10 +274,6 @@ describe('The Message class', function() {
           '\Flagged': true,
           '\Answered': true
         },
-        isUnread: true,
-        isFlagged: true,
-        isAnswered: true,
-        isDraft: true,
         hasAttachment: true,
         headers: {
           To: 'To'

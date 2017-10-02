@@ -2490,6 +2490,7 @@ describe('The Client class', function() {
           create: {
             expectedClientId: {
               subject: 'message topic',
+              keywords: {},
               mailboxIds: [2]
             }
           }
@@ -2500,7 +2501,7 @@ describe('The Client class', function() {
 
       client.send(new jmap.OutboundMessage(client, {
         subject: 'message topic',
-        isDraft: true
+        keywords: {$Draft: true}
       })).then(null, done);
     });
 

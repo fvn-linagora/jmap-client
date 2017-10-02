@@ -2146,7 +2146,7 @@ describe('The Client class', function() {
         .then(null, done);
     });
 
-    it('should force the isDraft flag', function(done) {
+    it('should set the $Draft keyword', function(done) {
       var client = saveAsDraftReadyClient();
 
       client.transport.post = function(url, headers, body) {
@@ -2482,7 +2482,7 @@ describe('The Client class', function() {
       }, done);
     });
 
-    it('should assign the "outbox" mailbox id in mailboxIds and remove isDraft', function(done) {
+    it('should assign the "outbox" mailbox id in mailboxIds and remove $Draft keyword', function(done) {
       var client = sendReadyClient();
 
       client.transport.post = function(url, headers, body) {

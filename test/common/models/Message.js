@@ -388,7 +388,7 @@ describe('The Message class', function() {
       expect(function() {
         new jmap.Message({
           updateMessage: function() {}
-        }, 'id', 'threadId', ['inbox']).setIsUnread();
+        }, 'id', 'blobId', 'threadId', ['inbox']).setIsUnread();
       }).to.throw(Error);
     });
 
@@ -396,7 +396,7 @@ describe('The Message class', function() {
       expect(function() {
         new jmap.Message({
           updateMessage: function() {}
-        }, 'id', 'threadId', ['inbox']).setIsUnread('true');
+        }, 'id', 'blobId', 'threadId', ['inbox']).setIsUnread('true');
       }).to.throw(Error);
     });
 
@@ -417,7 +417,7 @@ describe('The Message class', function() {
       expect(function() {
         new jmap.Message({
           updateMessage: function() {}
-        }, 'id', 'threadId', ['inbox']).setIsAnswered();
+        }, 'id', 'blobId', 'threadId', ['inbox']).setIsAnswered();
       }).to.throw(Error);
     });
 
@@ -425,7 +425,7 @@ describe('The Message class', function() {
       expect(function() {
         new jmap.Message({
           updateMessage: function() {}
-        }, 'id', 'threadId', ['inbox']).setIsAnswered('true');
+        }, 'id', 'blobId', 'threadId', ['inbox']).setIsAnswered('true');
       }).to.throw(Error);
     });
 

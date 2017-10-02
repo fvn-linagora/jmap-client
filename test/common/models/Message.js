@@ -404,10 +404,10 @@ describe('The Message class', function() {
       var message = new jmap.Message({}, 'id', 'blobId', 'threadId', ['inbox']);
 
       message.update = function(option) {
-        expect(option).to.deep.equal({ isUnread: true });
+        expect(option).to.deep.equal({ keywords: { $Seen: true } });
         done();
       };
-      message.setIsUnread(true);
+      message.setIsUnread(false);
     });
   });
 
@@ -433,7 +433,7 @@ describe('The Message class', function() {
       var message = new jmap.Message({}, 'id', 'blobId', 'threadId', ['inbox']);
 
       message.update = function(option) {
-        expect(option).to.deep.equal({ isAnswered: true });
+        expect(option).to.deep.equal({ keywords: { $Answered: true } });
         done();
       };
       message.setIsAnswered(true);

@@ -269,10 +269,10 @@ describe('The Message class', function() {
         threadId: 'fed75e7fb4f512aa',
         mailboxIds: ['mailbox2'],
         keywords: {
-          '\Draft': true,
-          '\Seen': true,
-          '\Flagged': true,
-          '\Answered': true
+          $Draft: true,
+          $Seen: true,
+          $Flagged: true,
+          $Answered: true
         },
         hasAttachment: true,
         headers: {
@@ -297,10 +297,10 @@ describe('The Message class', function() {
       expect(message.mailboxIds).to.deep.equal(['mailbox2']);
       expect(message.inReplyToMessageId).to.equal('fm2u11');
       expect(message.keywords).to.deep.equal({
-        '\Draft': true,
-        '\Seen': true,
-        '\Flagged': true,
-        '\Answered': true
+        $Draft: true,
+        $Seen: true,
+        $Flagged: true,
+        $Answered: true
       });
       expect(message.hasAttachment).to.equal(true);
       expect(message.headers).to.deep.equal({ To: 'To' });
@@ -375,7 +375,7 @@ describe('The Message class', function() {
       var message = new jmap.Message({}, 'id', 'blobId', 'threadId', ['inbox']);
 
       message.update = function(option) {
-        expect(option).to.deep.equal({ keywords: {$Flagged: true }});
+        expect(option).to.deep.equal({ keywords: { $Flagged: true } });
         done();
       };
       message.setIsFlagged(true);

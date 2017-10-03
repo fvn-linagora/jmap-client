@@ -145,9 +145,9 @@ describe('The Thread class', function() {
         setMessages: function(options) {
           expect(options).to.deep.equal({
             update: {
-              id1: { keywords: { $Flagged: true} },
-              id2: { keywords: { $Flagged: true} },
-              id3: { keywords: { $Flagged: true} }
+              id1: { keywords: { $Flagged: true } },
+              id2: { keywords: { $Flagged: true } },
+              id3: { keywords: { $Flagged: true } }
             }
           });
 
@@ -179,9 +179,9 @@ describe('The Thread class', function() {
         setMessages: function(options) {
           expect(options).to.deep.equal({
             update: {
-              id1: { keywords: { $Seen: true} },
-              id2: { keywords: { $Seen: true} },
-              id3: { keywords: { $Seen: true} }
+              id1: { keywords: { $Seen: true } },
+              id2: { keywords: { $Seen: true } },
+              id3: { keywords: { $Seen: true } }
             }
           });
 

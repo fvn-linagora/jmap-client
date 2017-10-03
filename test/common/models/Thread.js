@@ -145,9 +145,9 @@ describe('The Thread class', function() {
         setMessages: function(options) {
           expect(options).to.deep.equal({
             update: {
-              id1: { isFlagged: true },
-              id2: { isFlagged: true },
-              id3: { isFlagged: true }
+              id1: { keywords: { $Flagged: true} },
+              id2: { keywords: { $Flagged: true} },
+              id3: { keywords: { $Flagged: true} }
             }
           });
 
@@ -179,9 +179,9 @@ describe('The Thread class', function() {
         setMessages: function(options) {
           expect(options).to.deep.equal({
             update: {
-              id1: { isUnread: true },
-              id2: { isUnread: true },
-              id3: { isUnread: true }
+              id1: { keywords: { $Seen: true} },
+              id2: { keywords: { $Seen: true} },
+              id3: { keywords: { $Seen: true} }
             }
           });
 
@@ -189,7 +189,7 @@ describe('The Thread class', function() {
         }
       }, 'threadId', {
         messageIds: ['id1', 'id2', 'id3']
-      }).setIsUnread(true);
+      }).setIsUnread(false);
     });
 
   });
